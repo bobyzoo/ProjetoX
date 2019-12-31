@@ -1,0 +1,215 @@
+--
+-- File generated with SQLiteStudio v3.2.1 on qua nov 20 07:12:32 2019
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: class_world
+DROP TABLE IF EXISTS class_world;
+
+CREATE TABLE class_world (
+    id            INTEGER       PRIMARY KEY AUTOINCREMENT,
+    classificacao VARCHAR (100) 
+);
+
+INSERT INTO class_world (id, classificacao) VALUES (1, 'key');
+INSERT INTO class_world (id, classificacao) VALUES (2, 'lixo');
+INSERT INTO class_world (id, classificacao) VALUES (3, 'pontuacao');
+INSERT INTO class_world (id, classificacao) VALUES (9, 'acentuacao');
+
+-- Table: frases
+DROP TABLE IF EXISTS frases;
+
+CREATE TABLE frases (
+    id    INTEGER       PRIMARY KEY,
+    frase VARCHAR (255) 
+);
+
+INSERT INTO frases (id, frase) VALUES (3, 'TUDO BEM?');
+INSERT INTO frases (id, frase) VALUES (4, 'TUDO OTIMO');
+INSERT INTO frases (id, frase) VALUES (5, 'SIM?');
+INSERT INTO frases (id, frase) VALUES (6, 'VOCE GOSTA DE PROGRAMAR?');
+INSERT INTO frases (id, frase) VALUES (7, 'SIM, EU PROGRAMO EM PYTHON');
+INSERT INTO frases (id, frase) VALUES (8, 'QUAL SEU NOME?');
+INSERT INTO frases (id, frase) VALUES (9, 'MEU NOME E ROB');
+INSERT INTO frases (id, frase) VALUES (10, 'QUAL SEU NOME?');
+INSERT INTO frases (id, frase) VALUES (11, 'MEU NOME E ROB');
+INSERT INTO frases (id, frase) VALUES (12, 'SEU NOME?');
+INSERT INTO frases (id, frase) VALUES (13, 'MEU NOME E ROB');
+INSERT INTO frases (id, frase) VALUES (14, 'COMO VOCE SE CHAMA?');
+INSERT INTO frases (id, frase) VALUES (15, 'ME CHAMO ROB');
+INSERT INTO frases (id, frase) VALUES (16, 'COMO VOCE SE CHAMA?');
+INSERT INTO frases (id, frase) VALUES (17, 'MEU NOME E ROB');
+INSERT INTO frases (id, frase) VALUES (18, 'QUEM E VOCE?');
+INSERT INTO frases (id, frase) VALUES (19, 'EU SOU O ROB');
+INSERT INTO frases (id, frase) VALUES (20, 'QUANTOS ANOS VOCE TEM?');
+INSERT INTO frases (id, frase) VALUES (21, 'MEU REPOSITORIO FOI CRIADO DIA 05/09');
+INSERT INTO frases (id, frase) VALUES (22, 'LIGA A LUZ DO MEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (23, 'LIGAR ABAJUR');
+INSERT INTO frases (id, frase) VALUES (25, 'DESLIGAR A LUZ DO MEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (26, 'LIGA A LUZ DO QUARTO DE CASAL');
+INSERT INTO frases (id, frase) VALUES (27, 'DESLIGAR A LUZ DO QUARTO DE CASAL');
+INSERT INTO frases (id, frase) VALUES (28, 'DESLIGA A LUZ DO MEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (29, 'DESLIGA A LUZ DO QUARTO DE CASAL');
+INSERT INTO frases (id, frase) VALUES (30, 'LIGAR A LUZ DO MEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (31, 'LIGAR A LUZ DO QUARTO DE CASAL');
+INSERT INTO frases (id, frase) VALUES (33, 'DESLISGA ABAJUR');
+INSERT INTO frases (id, frase) VALUES (34, 'QUE HORAS SAO?');
+INSERT INTO frases (id, frase) VALUES (35, 'QUE HORAS E?');
+INSERT INTO frases (id, frase) VALUES (36, 'QUAL O HORARIO?');
+INSERT INTO frases (id, frase) VALUES (37, 'QUE HORAS SAO AGORA?');
+INSERT INTO frases (id, frase) VALUES (38, 'QUE HORAS TEM?');
+INSERT INTO frases (id, frase) VALUES (39, 'QUAL A PREVISAO DO TEMPO DE HOJE?');
+INSERT INTO frases (id, frase) VALUES (40, 'QUAL A TEMPERATURA ATUAL?');
+INSERT INTO frases (id, frase) VALUES (41, 'QUAL A PREVISAO DO TEMPO PRA AMANHA?');
+INSERT INTO frases (id, frase) VALUES (42, 'QUAL A TEMPERAURA AGORA?');
+INSERT INTO frases (id, frase) VALUES (43, 'TUDO CERTO?');
+INSERT INTO frases (id, frase) VALUES (44, 'SEJA BEM VINDO');
+INSERT INTO frases (id, frase) VALUES (45, 'TUDO BEM');
+INSERT INTO frases (id, frase) VALUES (46, 'TOCA PLAYLIST');
+INSERT INTO frases (id, frase) VALUES (47, 'QUAL SEU PROPOSITO DE VIDA ?');
+INSERT INTO frases (id, frase) VALUES (48, 'EU FUI DESENVOLVIDA PARA FACILITAR SUA VIDA');
+INSERT INTO frases (id, frase) VALUES (49, 'PRA QUE VOCE SERVE ?');
+INSERT INTO frases (id, frase) VALUES (50, 'PRA QUE VOCE UTIL ?');
+INSERT INTO frases (id, frase) VALUES (51, 'PRA AJUDAR VOCE EM QUALQUER COISA');
+INSERT INTO frases (id, frase) VALUES (52, 'COE');
+INSERT INTO frases (id, frase) VALUES (53, 'TUDO BEM');
+INSERT INTO frases (id, frase) VALUES (54, 'NA MAIS BOA');
+INSERT INTO frases (id, frase) VALUES (55, 'SIM');
+INSERT INTO frases (id, frase) VALUES (56, 'LIGANDO A LUZ DO SEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (57, 'LIGANDO ABAJUR');
+INSERT INTO frases (id, frase) VALUES (58, 'DESLISGANDO A LUZ DO SEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (59, 'DELISGANDO A LUZ DO SEU QUARTO');
+INSERT INTO frases (id, frase) VALUES (60, 'DESLIGANDO O ABAJUR');
+INSERT INTO frases (id, frase) VALUES (61, 'OBRIGADO');
+
+-- Table: letras_acentuadas
+DROP TABLE IF EXISTS letras_acentuadas;
+
+CREATE TABLE letras_acentuadas (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_letra   INTEGER,
+    letra_real VARCHAR
+);
+
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (1, 44, 'A');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (2, 43, 'A');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (3, 42, 'A');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (4, 41, 'A');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (5, 40, 'O');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (6, 39, 'O');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (7, 34, 'U');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (8, 35, 'I');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (9, 36, 'E');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (10, 37, 'E');
+INSERT INTO letras_acentuadas (id, id_letra, letra_real) VALUES (11, 38, 'O');
+
+-- Table: rel_class_word
+DROP TABLE IF EXISTS rel_class_word;
+
+CREATE TABLE rel_class_word (
+    id       INTEGER       PRIMARY KEY AUTOINCREMENT,
+    word     VARCHAR (100),
+    id_class INTEGER
+);
+
+INSERT INTO rel_class_word (id, word, id_class) VALUES (1, 'ELE', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (2, 'ELA', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (3, 'TU', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (4, 'NOS', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (5, 'VOCÊ', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (6, 'NÓS', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (7, 'TU', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (8, 'EU', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (9, 'PRA', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (16, 'E', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (17, 'OU', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (18, 'A', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (19, 'O', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (20, 'AS', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (21, 'OS', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (22, 'NO', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (23, 'NA', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (25, 'QUE', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (26, 'É', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (27, 'ME', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (29, '!', 3);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (30, ')', 3);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (31, '(', 3);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (32, ',', 3);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (33, '.', 3);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (34, 'Ú', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (35, 'Ì', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (36, 'É', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (37, 'Ê', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (38, 'Ô', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (39, 'Õ', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (40, 'Ó', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (41, 'Ã', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (42, 'Â', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (43, 'Á', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (44, 'À', 4);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (45, '/', 3);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (46, 'DA', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (47, 'DO', 2);
+INSERT INTO rel_class_word (id, word, id_class) VALUES (48, 'DE', 2);
+
+-- Table: rel_per_res
+DROP TABLE IF EXISTS rel_per_res;
+
+CREATE TABLE rel_per_res (
+    id     INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_per INTEGER,
+    id_res INTEGER
+);
+
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (1, 49, 48);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (2, 50, 51);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (4, 52, 2);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (5, 52, 3);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (6, 52, 52);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (7, 43, 4);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (8, 43, 53);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (9, 43, 54);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (10, 6, 55);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (11, 8, 9);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (12, 8, 11);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (13, 8, 13);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (14, 8, 15);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (15, 8, 17);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (16, 8, 19);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (17, 12, 9);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (18, 12, 11);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (19, 12, 13);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (20, 12, 15);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (21, 12, 17);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (22, 12, 19);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (23, 14, 9);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (24, 14, 11);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (25, 14, 13);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (26, 14, 15);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (27, 14, 17);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (28, 14, 19);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (29, 18, 9);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (30, 18, 11);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (31, 18, 13);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (32, 18, 15);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (33, 18, 17);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (34, 18, 19);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (35, 20, 21);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (36, 22, 56);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (37, 23, 57);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (38, 25, 58);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (39, 28, 59);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (40, 30, 56);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (41, 33, 0);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (42, 33, 60);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (43, 44, 61);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (44, 47, 48);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (45, 49, 51);
+INSERT INTO rel_per_res (id, id_per, id_res) VALUES (46, 50, 48);
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;
