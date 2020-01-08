@@ -1,6 +1,5 @@
 import speech_recognition as sr
-from Audio import *
-Audio = Audio()
+
 r = sr.Recognizer()
 with sr.Microphone() as s:
     r.adjust_for_ambient_noise(s)
@@ -9,4 +8,3 @@ with sr.Microphone() as s:
         audio = r.listen(s)
         speech = r.recognize_google(audio,language='pt')
         print('You say: ', speech)
-        Audio.cria_audio(speech)
