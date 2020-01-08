@@ -53,7 +53,7 @@ pyttsx3==2.7
 pytz==2018.9
 pywin32==223
 pywin32-ctypes==0.2.0
-PyYAML==3.13
+PyYAML==5.1
 requests==2.22.0
 requests-oauthlib==1.0.0
 rsa==4.0
