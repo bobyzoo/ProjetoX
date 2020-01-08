@@ -1,6 +1,5 @@
 import pyttsx3
 
-
 class Audio():
     def __init__(self) -> None:
         self.speak = pyttsx3.init()

@@ -1,7 +1,6 @@
 import sqlite3
 from random import *
 
-
 class bancoDAO():
 
     def __init__(self, banco):

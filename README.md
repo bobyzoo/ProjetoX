@@ -6,7 +6,6 @@
 "Project-X" is a program that aims to create an artificial intelligence system that can recognize people and communicate with them.
 The system is based on Python and its own functions to create chatbot artificial intelligence.
 
-[![Package Version](https://img.shields.io/pypi/v/chatterbot.svg)](https://pypi.python.org/pypi/chatterbot/)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![Requirements Status](https://requires.io/github/gunthercox/ChatterBot/requirements.svg?branch=master)](requirements.txt)
 
