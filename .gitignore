@@ -18,3 +18,5 @@ __pycache__/importacoes.cpython-36.pyc
 *.json
 
 .idea/
+
+*.yml
