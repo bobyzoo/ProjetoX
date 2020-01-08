@@ -9,7 +9,6 @@ The system is based on Python and its own functions to create chatbot artificial
 [![Package Version](https://img.shields.io/pypi/v/chatterbot.svg)](https://pypi.python.org/pypi/chatterbot/)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![Requirements Status](https://requires.io/github/gunthercox/ChatterBot/requirements.svg?branch=master)](requirements.txt)
-[![Coverage Status](https://img.shields.io/coveralls/gunthercox/ChatterBot.svg)](https://coveralls.io/r/gunthercox/ChatterBot)
 
 The purpose of this project is to create an artificial intelligence that most closely resembles the AI ​"Jarvis used in the Iron Man movie.
 
