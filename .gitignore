@@ -18,3 +18,9 @@ __pycache__/importacoes.cpython-36.pyc
 *.json
 
 .idea/
+
+ReconhecimentoFacial/classificadorEigen.yml
+
+ReconhecimentoFacial/classificadorFisher.yml
+
+ReconhecimentoFacial/classificadorLBPH.yml
