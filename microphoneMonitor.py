@@ -4,7 +4,7 @@ class MicrophoneMonitor():
 
     #leave the microphone level between 50 and 60
     @staticmethod
-    def monitora_microfone(hotword):
+    def monitor_microphone(hotword):
         micro = sr.Recognizer()
         with sr.Microphone() as source:
             micro.adjust_for_ambient_noise(source)

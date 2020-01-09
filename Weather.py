@@ -8,7 +8,6 @@ class Weather():
     @staticmethod
     def currentTemperature(Localization='Florianopolis'):
         url ='http://api.openweathermap.org/data/2.5/weather?q='+Localization+'&appid='+WeatherApiKey+'&units=metric&lang=pt'
-        print(url)
         site = get(url)
         weather = site.json()
         try:
