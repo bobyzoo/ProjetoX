@@ -24,3 +24,5 @@ ReconhecimentoFacial/classificadorEigen.yml
 ReconhecimentoFacial/classificadorFisher.yml
 
 ReconhecimentoFacial/classificadorLBPH.yml
+
+htaccess.py
