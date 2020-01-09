@@ -1,6 +1,6 @@
 from microphoneMonitor import *
 from requests import get
-from bs4 import BeautifulSoup
+from Notices import *
 import webbrowser as browser
 from Audio import *
 from datetime import datetime

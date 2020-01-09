@@ -11,7 +11,7 @@ class AssistantAI:
     # executa commandos diversos
     def executa_comandos(self, trigger):
         if 'notícias' in trigger:
-            self.ultimas_noticias()
+            Audio.cria_audio(Notices.lastNotices())
         elif 'tempo' in trigger and 'agora' in trigger:
             Audio.cria_audio(Weather.currentTemperature())
         elif 'tempo' in trigger and 'hoje' in trigger:
@@ -39,11 +39,6 @@ class AssistantAI:
                 Audio.cria_audio(menssagem)
 
     #####FUNÇÕES COMANDOS####
-    def ultimas_noticias(self):
-        site = get('https://news.google.com/rss?hl=pt-BR&gl=BR&ceid=BR:pt-419')
-        noticias = BeautifulSoup(site.text, 'html.parser')
-        for item in noticias.find_all('item')[:3]:
-            Audio.cria_audio(item.title.text)
 
     def playlist(self, album):
         if album == 'mundanos':
