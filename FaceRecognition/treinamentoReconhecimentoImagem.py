@@ -28,11 +28,6 @@ print('Treinando.... ')
 eigenface.train(faces,ids)
 eigenface.write('classificadorEigen.yml')
 
-fisherface.train(faces,ids)
-eigenface.write('classificadorFisher.yml')
-
-lbph.train(faces,ids)
-lbph.write('classificadorLBPH.yml')
 
 
 print('pronto')

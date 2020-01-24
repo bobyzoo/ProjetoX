@@ -1,12 +1,12 @@
 import cv2
 
-detectorFace = cv2.CascadeClassifier("FaceRecognition/haarcascade-frontalface-default.xml")
+detectorFace = cv2.CascadeClassifier("haarcascade-frontalface-default.xml")
 
 reconhecedor = cv2.face.EigenFaceRecognizer_create()
-reconhecedor.read("FaceRecognition/classificadorEigen.yml")
+reconhecedor.read("classificadorEigen.yml")
 largura,altura = 220,220
 font = cv2.FONT_HERSHEY_COMPLEX_SMALL
-cam = cv2.VideoCapture('C:Users\ROBERTO\Pictures\Pic')
+cam = cv2.VideoCapture(0)
 
 while 1:
     conectado,imagem = cam.read()
