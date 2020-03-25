@@ -1,5 +1,13 @@
 from AssistantAI import *
+from FaceRecognition.FaceRecognition import *
+import threading
 
 Assist = AssistantAI('rose')
 
-Assist.main()
+cam = FaceRecognition
+
+face = threading.Thread(target=cam.main)
+
+face.start()
+while True:
+    pass
