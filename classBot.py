@@ -12,6 +12,8 @@ class classBot(bancoDAO):
         if escolhido[1] < 0.4:
             if self.mode_train == True:
                 self.modoTrain(frase)
+            else:
+                return 'Eu não sei o que te responder'
         else:
             sql = "SELECT rel.*,f.frase AS pergunta,f1.frase AS resposta FROM rel_per_res AS rel JOIN frases AS f ON rel.id_per = f.id JOIN frases AS f1 ON rel.id_res = f1.id WHERE pergunta = '{}'".format(
                 escolhido[0])

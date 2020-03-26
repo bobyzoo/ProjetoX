@@ -1,13 +1,51 @@
 from AssistantAI import *
+from Audio import *
+import queue
+
 from FaceRecognition.FaceRecognition import *
+from microphoneMonitor import *
 import threading
 
-Assist = AssistantAI('rose')
+queues = queue.Queue()
 
-cam = FaceRecognition
+def cria_assist(comando):
+    Assist = AssistantAI('rose')
+    return Assist.executa_comandos(comando)
 
-face = threading.Thread(target=cam.main)
 
-face.start()
-while True:
-    pass
+# cam = FaceRecognition()
+# face = threading.Thread(target=cam.main)
+
+
+mic = MicrophoneMonitor
+audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)), args=(queues, 'rose'))
+
+audio = Audio()
+
+
+# face.start()
+audio_capture.start()
+
+while 1:
+    result = queues.get()
+    try:
+        if not 'Comando:' in result:
+            print(result)
+            audio.cria_audio(result)
+    except:
+        print('erro')
+
+
+
+    if not audio_capture.is_alive():
+
+        assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
+                                     args=(queues, result))
+        assistent.start()
+
+
+
+        audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
+                                         args=(queues, 'rose'))
+        audio_capture.start()
+

@@ -169,5 +169,5 @@ class bancoDAO():
                 self.insereRelPerResId(self.idFrase(frase), self.idFrase(resposta))
         return 1
 
-        def close(self):
-            return self.conn.close()
+    def close(self):
+        return self.conn.close()
