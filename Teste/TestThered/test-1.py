@@ -30,7 +30,7 @@ face =FaceRecognition()
 
 
 t = threading.Thread(target=face.main)
-micro = threading.Thread(target=microfone)
+micro = threading.Thread(target=microfone,)
 t.start()
 micro.start()
 while t.isAlive() or micro.isAlive():
