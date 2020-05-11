@@ -12,11 +12,9 @@ id = input('Enter person id: ')
 while True:
     conn, image = cam.read()
     imageGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    facesDetectadas = classifier.detectMultiScale(imageGray, scaleFactor=1.5, minSize=(30, 30))
+    facesDetectadas = classifier.detectMultiScale(imageGray, scaleFactor=1.5, minSize=(150, 150))
 
     for (x, y ,l,a) in facesDetectadas:
-        # cv2.circle(image,(x,y),5,(255,255,0),2)
-        # cv2.circle(image,(x+l,y+a),5,(255,255,0),2)
         cv2.rectangle(image, (x,y) , (x+l, y+a) , (0,0,255) , 2)
         region = image[y:y + a, x:x +l]
         eyeRegion = cv2.cvtColor(region,cv2.COLOR_BGR2GRAY)

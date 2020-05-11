@@ -4,30 +4,24 @@ from SerialCommunication.SerialCom import *
 
 class FaceRecognition():
     def __init__(self) -> object:
-        self.detectorFace = cv2.CascadeClassifier("haarcascade-frontalface-default.xml")
+        self.detectorFace = cv2.CascadeClassifier("FaceRecognition/haarcascade-frontalface-default.xml")
         self.reconhecedor = cv2.face.EigenFaceRecognizer_create()
-        self.reconhecedor.read("classificadorEigen.yml")
+        self.reconhecedor.read("FaceRecognition/classificadorEigen.yml")
         self.largura, self.altura = 220, 220
         self.font = cv2.FONT_HERSHEY_COMPLEX_SMALL
         self.cam = cv2.VideoCapture(0)
         self.serial = SerialCom()
 
     def follow_face(self, posx):
-        print(posx)
         if posx < 200:
             self.serial.write("move:-10")
-            print("move:-10")
         elif 200<=posx and posx<=300:
             self.serial.write("move:-5")
-            print("move:-5")
         elif 340 <= posx and posx <= 440:
             self.serial.write("move:5")
-            print("move:5")
         elif posx > 440:
-            print("move:10")
             self.serial.write("move:+10")
         else:
-            print("move:0")
             self.serial.write("move:0")
 
     def write_text(self, mensagem):
@@ -71,6 +65,3 @@ class FaceRecognition():
         cam.release()
         cv2.destroyAllWindows()
 
-
-face = FaceRecognition()
-face.main()
