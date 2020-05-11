@@ -8,22 +8,22 @@ import threading
 
 queues = queue.Queue()
 
+
 def cria_assist(comando):
     Assist = AssistantAI('rose')
+    comando = comando.replace('Comando: ', '')
     return Assist.executa_comandos(comando)
 
 
-# cam = FaceRecognition()
-# face = threading.Thread(target=cam.main)
+cam = FaceRecognition()
+face = threading.Thread(target=cam.main, )
 
-
-mic = MicrophoneMonitor
+mic = MicrophoneMonitor()
 audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)), args=(queues, 'rose'))
 
 audio = Audio()
 
-
-# face.start()
+face.start()
 audio_capture.start()
 
 while 1:
@@ -35,17 +35,24 @@ while 1:
     except:
         print('erro')
 
-
-
     if not audio_capture.is_alive():
+        arquivo = open('arq01.txt', 'r')
+        nome = arquivo.read()
+        print(nome)
+        if(nome == "Nao indentificado\n"):
+            audio.cria_audio('Não posso te responder se eu não te ver!')
+            assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
+                                         args=(queues, result))
+            assistent.start()
 
-        assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
+            audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
+                                             args=(queues, 'rose'))
+            audio_capture.start()
+        else:
+            assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
                                      args=(queues, result))
-        assistent.start()
+            assistent.start()
 
-
-
-        audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
+            audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
                                          args=(queues, 'rose'))
-        audio_capture.start()
-
+            audio_capture.start()

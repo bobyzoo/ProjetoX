@@ -38,7 +38,7 @@ class AssistantAI:
             if procura != 0:
                 return procura
             else:
-                menssagem = trigger.strip(self.Assist)
+                menssagem = trigger.strip()
                 return (menssagem)
 
     #####FUNÇÕES COMANDOS####

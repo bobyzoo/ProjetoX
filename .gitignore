@@ -40,3 +40,12 @@ __pycache__/htaccess.cpython-36.pyc
 __pycache__/microphoneMonitor.cpython-36.pyc
 __pycache__/Weather.cpython-36.pyc
 /FaceRecognition/img/
+__pycache__/AssistantAI.cpython-36.pyc
+
+__pycache__/Notices.cpython-36.pyc
+
+FaceRecognition/__pycache__/FaceRecognition.cpython-36.pyc
+
+FaceRecognition/__pycache__/teste.cpython-36.pyc
+
+SerialCommunication/__pycache__/
