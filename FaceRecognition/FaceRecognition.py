@@ -41,8 +41,9 @@ class FaceRecognition():
             conectado, imagem = self.cam.read()
             imagemCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
             facesDetectadas = self.detectorFace.detectMultiScale(imagemCinza, scaleFactor=1.5, minSize=(30, 30))
-            nome = 'Não Indentificado'
+            nome = 'Nao indentificado'
             time.sleep(0.02)
+            meio = 0
             for (x, y, l, a) in facesDetectadas:
                 imagemFace = cv2.resize(imagemCinza[y:y + a, x:x + l], (self.largura, self.altura))
                 cv2.rectangle(imagem, (x, y), (x + l, y + a), (0, 0, 255), 2)
@@ -56,13 +57,10 @@ class FaceRecognition():
                     nome = 'Camilla'
                 elif id == 3:
                     nome = 'Joana'
-
-
                 cv2.putText(imagem, nome, (x, y + (a + 30)), self.font, 2, (0, 0, 255))
                 cv2.putText(imagem, str(x), (x, y + (a + 50)), self.font, 2, (0, 255, 220))
 
             cont += 1
-
 
             if cont == 10:
                 cont = 0
