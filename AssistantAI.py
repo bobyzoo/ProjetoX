@@ -21,7 +21,6 @@ class AssistantAI:
             return self.playlist('mundanos')
         elif 'dia' in trigger and 'hoje' in trigger:
             return self.data(dia=True)
-
         elif 'horas' in trigger:
             return self.data(horas=True)
         elif 'led' in trigger and ' liga' in trigger:

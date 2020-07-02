@@ -49,3 +49,8 @@ FaceRecognition/__pycache__/FaceRecognition.cpython-36.pyc
 FaceRecognition/__pycache__/teste.cpython-36.pyc
 
 SerialCommunication/__pycache__/
+
+*.pyc
+
+venv/Lib/site-packages/joblib/externals/loky/backend/
+/venv/

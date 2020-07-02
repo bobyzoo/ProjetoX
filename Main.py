@@ -39,20 +39,13 @@ while 1:
         arquivo = open('arq01.txt', 'r')
         nome = arquivo.read()
         print(nome)
-        if(nome == "Nao indentificado\n"):
+
+        if nome == "Nao indentificado\n":
             audio.cria_audio('Não posso te responder se eu não te ver!')
-            assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
-                                         args=(queues, result))
-            assistent.start()
-
-            audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
-                                             args=(queues, 'rose'))
-            audio_capture.start()
-        else:
-            assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
+        assistent = threading.Thread(target=lambda q, arg1: q.put(cria_assist(arg1)),
                                      args=(queues, result))
-            assistent.start()
+        assistent.start()
 
-            audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
+        audio_capture = threading.Thread(target=lambda q, arg1: q.put(mic.monitor_microphone(arg1)),
                                          args=(queues, 'rose'))
-            audio_capture.start()
+        audio_capture.start()

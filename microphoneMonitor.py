@@ -1,12 +1,12 @@
-import speech_recognition as sr
+from speech_recognition import Microphone, Recognizer
 
-class MicrophoneMonitor():
+class MicrophoneMonitor:
 
-    #leave the microphone level between 50 and 60
+    # leave the microphone level between 50 and 60
     @staticmethod
     def monitor_microphone(hotword='rose'):
-        micro = sr.Recognizer()
-        with sr.Microphone() as source:
+        micro = Recognizer()
+        with Microphone() as source:
             micro.adjust_for_ambient_noise(source)
             while True:
                 print('Aguardando comando: ')
@@ -16,7 +16,7 @@ class MicrophoneMonitor():
                     trigger = trigger.lower()
                     if hotword in trigger:
                         print('Comando: ', trigger)
-                        trigger = 'Comando: '+ trigger
+                        trigger = 'Comando: ' + trigger
                         return trigger
                 except:
                     return 'Não ouvi nada'
