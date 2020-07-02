@@ -34,7 +34,7 @@ class MainBrain(object):
         :param setA:
         :param setB:
         '''
-        print(setA,setB,(len(setA & setB)) / (len(setA | setB)))
+        # print(setA,setB,(len(setA & setB)) / (len(setA | setB)))
         return (len(setA & setB)) / (len(setA | setB))
 
     def key_words(self, command):
@@ -63,6 +63,7 @@ class MainBrain(object):
                     numJ = indexFinal
                     id_action = line[2]
                     response = line[1]
+        print(numJ)
         return response, id_action, numJ
 
     def similarity_index(self, p1, p2):

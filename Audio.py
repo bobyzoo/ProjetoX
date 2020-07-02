@@ -9,3 +9,5 @@ class Audio(object):
         self.speak.setProperty('rate', 150)
         self.speak.say(mensagem)
         self.speak.runAndWait()
+
+

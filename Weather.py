@@ -1,5 +1,4 @@
 from requests import get
-from htaccess import *
 
 class Weather():
     def __init__(self) -> None:

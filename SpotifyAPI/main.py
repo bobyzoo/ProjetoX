@@ -22,11 +22,13 @@ class Spotify(object):
             )
 
             self.spotify.token = user_token
+            self.inicialize = True
             return 'Inicializado com sucesso!'
         except:
             return 'Erro ao conectar com spotify'
 
     def check_inicialize(self):
+        print(self.inicialize)
         try:
             if not self.inicialize:
                 self.inicialization()
@@ -37,9 +39,9 @@ class Spotify(object):
     def pause(self):
         if self.check_inicialize():
             self.spotify.playback_pause()
-            return 'Iniciando'
+            return 'Parei ela pra você'
         else:
-            return 'Erro'
+            return 'Erro ao tentar pausar'
 
     def resume(self):
         if self.check_inicialize():
