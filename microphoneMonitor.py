@@ -1,22 +1,28 @@
-import speech_recognition as sr
+from speech_recognition import Microphone, Recognizer, UnknownValueError, RequestError
 
-class MicrophoneMonitor():
 
-    #leave the microphone level between 50 and 60
-    @staticmethod
-    def monitor_microphone(hotword='rose'):
-        micro = sr.Recognizer()
-        with sr.Microphone() as source:
-            micro.adjust_for_ambient_noise(source)
+class MicrophoneMonitor(object):
+
+    def __init__(self) -> None:
+        self.micro = Recognizer()
+        self.micro.energy_threshold = 4000
+        self.micro.pause_threshold = 0.5
+
+    def monitor_microphone(self, hotword='jarvis'):
+        with Microphone() as source:
+            self.micro.adjust_for_ambient_noise(source, duration=0.5)
             while True:
                 print('Aguardando comando: ')
-                audio = micro.listen(source)
+                audio = self.micro.listen(source)
                 try:
-                    trigger = (micro.recognize_google(audio, language='pt'))
-                    trigger = trigger.lower()
-                    if hotword in trigger:
+                    trigger = self.micro.recognize_google(audio, language='pt')
+                    # with open("microphone-results.wav", "wb") as f:
+                    #     f.write(audio.get_wav_data())
+                    print(trigger)
+                    if hotword.lower() in trigger or hotword.capitalize() in trigger:
                         print('Comando: ', trigger)
-                        trigger = 'Comando: '+ trigger
                         return trigger
-                except:
-                    return 'Não ouvi nada'
+                except UnknownValueError:
+                    print("Google Speech Recognition could not understand audio")
+                except RequestError as e:
+                    print("Could not request results from Google Speech Recognition service; {0}".format(e))
