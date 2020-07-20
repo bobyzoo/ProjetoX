@@ -5,6 +5,7 @@ class DataBase:
 
     def __init__(self, banco):
         self.conn = sqlite3.connect(banco)
+        self.last_id = 0
 
     def select(self, tabela, filter=''):
         cursor = self.conn.cursor()
@@ -20,6 +21,26 @@ class DataBase:
             print(' ')
             print('-' * 50)
 
+    def selectTable(self, tabela, filter=''):
+        cursor = self.conn.cursor()
+        if filter != '':
+            filter = f'WHERE {filter}'
+        cursor.execute(f"SELECT * FROM {tabela} {filter}")
+        table = []
+        for line in cursor.fetchall():
+            table.append(line)
+        return table
+
+    def getIDPhrase(self,phrase):
+        cursor = self.conn.cursor()
+        cursor.execute(f"SELECT * FROM phrases WHERE sentence = '{phrase}' ")
+        print(f"SELECT * FROM phrases WHERE sentence = '{phrase}'")
+        if len(cursor.fetchall()) > 0:
+            print(cursor.fetchall())
+            return cursor.fetchone()
+        return False
+    def getLastId(self):
+        return self.last_id
     def insert_actions(self, command):
         cursor = self.conn.cursor()
         sql = f"INSERT INTO list_actions (description) values ('{command}')"
@@ -27,12 +48,42 @@ class DataBase:
         self.conn.commit()
         print('Inserido com sucesso!')
 
-    def insert_new_phrase(self, command, id_context):
+    def insert_new_phrase(self, command, id_context=0):
         cursor = self.conn.cursor()
         sql = f"INSERT INTO phrases (sentence,id_contexts) values ('{command}',{id_context})"
         cursor.execute(sql)
         self.conn.commit()
-        print('Inserido com sucesso!')
+        self.last_id = cursor.lastrowid
+        print('Inserido frase com sucesso!')
+
+    def verify_phrase(self, phrase):
+        cursor = self.conn.cursor()
+        sql = f"SELECT * FROM phrases WHERE sentence = '{phrase}'"
+        cursor.execute(sql)
+        if len(cursor.fetchall()) > 0:
+            print('Existe a frase')
+            return True
+        print('nao existe a frase')
+        return False
+
+    def verify_phrase_conn(self, phrase1, phrase2):
+        cursor = self.conn.cursor()
+        sql = f"SELECT * FROM answer_for_quest WHERE id_quest = '{phrase1}' and id_answer = '{phrase2}'"
+        print(sql)
+        cursor.execute(sql)
+        if len(cursor.fetchall()) > 0:
+            return True
+        return False
+
+    def insert_phrase_conn(self, phrase1, phrase2):
+        cursor = self.conn.cursor()
+        print(phrase1)
+        print(phrase2)
+        sql = f"INSERT INTO answer_for_quest (id_quest,id_answer) values ('{phrase1}',{phrase2})"
+        print(sql)
+        cursor.execute(sql)
+        self.conn.commit()
+        print('Inserido conexao sucesso!')
 
     def insert_new_call_command(self, command, id_action):
         cursor = self.conn.cursor()
