@@ -1,5 +1,5 @@
 import unittest
-from SerialCommunication.SerialCom import *
+from APIs.SerialCommunication.SerialCom import *
 
 
 class TestSerialCom(unittest.TestCase):

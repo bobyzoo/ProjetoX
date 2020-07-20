@@ -1,31 +1,41 @@
 from BrainIA import *
 import datetime
-from Audio import *
-from Notices import *
-from SpotifyAPI.main import *
+from APIs.Audio.Audio import *
+from APIs.Notices.Notices import *
+from APIs.SpotifyAPI.main import *
+import random
 
 
 class Jarvis(MainBrain, Audio):
 
-    def __init__(self, train_mode=False) -> None:
+    def __init__(self, train_mode=False, train_chat_mode=False) -> None:
         super().__init__()
-        self.train_mode = train_mode
         self.spotify = Spotify()
+        self.train_mode = train_mode
+        self.train_chat_mode = train_chat_mode
         self.name = 'Jarvis'
+        if train_chat_mode:
+            self.chat_mode()
 
     def listener(self, command: str) -> None:
-        command = command.replace(self.name.lower(),'').replace(self.name.capitalize(),'').strip()
+        command = command.replace(self.name.lower(), '').replace(self.name.capitalize(), '').strip()
         context = self.brain(command)
-        response, id_action, index = self.search_response(context, self.format_command(command))
-
+        response, id_action, index = self.search_action(context, self.format_command(command))
         if index > 1:
             print(index)
             if self.train_mode and index != 3:
                 self.learn_new_call_command(command, id_action)
             self.execute_command(command, id_action)
         else:
-            print(index)
-            self.speaker('Não entendi')
+            response, id_con, index = self.search_dialog_context(context, self.format_command(command))
+            if index > 1:
+                if self.train_mode and index != 3:
+                    self.learn_new_dialog(command, id_con)
+                    print(response)
+                self.speaker(response)
+            else:
+                print('nao entendi')
+                self.speaker('Não entendi')
 
     def speaker(self, message):
         self.cria_audio(message)
@@ -46,3 +56,16 @@ class Jarvis(MainBrain, Audio):
             # Pausa spotify
             self.speaker(self.spotify.pause())
 
+    def chat_mode(self):
+        print('comeca')
+        while 1:
+            list = self.selectTable('phrases')
+            num = random.randint(0, len(list) - 1)
+            phrase = list[num]
+            answer = input(phrase[1])
+
+            if not self.verify_phrase(answer):
+                self.insert_new_phrase(answer)
+                self.insert_phrase_conn(phrase[0], self.getLastId())
+            elif not self.verify_phrase_conn(phrase[0], self.getIDPhrase(answer)):
+                self.insert_phrase_conn(phrase[0], self.getIDPhrase(answer))

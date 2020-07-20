@@ -32,23 +32,23 @@ __pycache__/htaccess.cpython-36.pyc
 __pycache__/microphoneMonitor.cpython-36.pyc
 
 __pycache__/Weather.cpython-36.pyc
-/FaceRecognition/img/
+/APIs/FaceRecognition/img/
 
 *.yml
 
 __pycache__/htaccess.cpython-36.pyc
 __pycache__/microphoneMonitor.cpython-36.pyc
 __pycache__/Weather.cpython-36.pyc
-/FaceRecognition/img/
+/APIs/FaceRecognition/img/
 __pycache__/AssistantAI.cpython-36.pyc
 
 __pycache__/Notices.cpython-36.pyc
 
-FaceRecognition/__pycache__/FaceRecognition.cpython-36.pyc
+APIs/FaceRecognition/__pycache__/FaceRecognition.cpython-36.pyc
 
-FaceRecognition/__pycache__/teste.cpython-36.pyc
+APIs/FaceRecognition/__pycache__/teste.cpython-36.pyc
 
-SerialCommunication/__pycache__/
+APIs/SerialCommunication/__pycache__/
 
 *.pyc
 

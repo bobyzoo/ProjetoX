@@ -6,7 +6,7 @@ class DataBase:
     def __init__(self, banco):
         self.conn = sqlite3.connect(banco)
 
-    def select(self, tabela,filter = ''):
+    def select(self, tabela, filter=''):
         cursor = self.conn.cursor()
         if filter != '':
             filter = f'WHERE {filter}'
@@ -27,7 +27,14 @@ class DataBase:
         self.conn.commit()
         print('Inserido com sucesso!')
 
-    def insert_new_call_command(self, command,id_action):
+    def insert_new_phrase(self, command, id_context):
+        cursor = self.conn.cursor()
+        sql = f"INSERT INTO phrases (sentence,id_contexts) values ('{command}',{id_context})"
+        cursor.execute(sql)
+        self.conn.commit()
+        print('Inserido com sucesso!')
+
+    def insert_new_call_command(self, command, id_action):
         cursor = self.conn.cursor()
         sql = f"INSERT INTO list_commands (command,id_action) values ('{command}',{id_action})"
         cursor.execute(sql)
@@ -56,7 +63,12 @@ class DataBase:
         cursor.execute("SELECT * FROM rel_class_word where id_class=3")
         return cursor.fetchall()
 
-    def search_by_token_in_commands(self,key):
+    def search_by_token_in_commands(self, key):
         cursor = self.conn.cursor()
         cursor.execute(f"SELECT * FROM list_commands WHERE command LIKE '%{key}%';")
+        return cursor.fetchall()
+
+    def search_by_response_in_contexts(self, key):
+        cursor = self.conn.cursor()
+        cursor.execute(f"SELECT * FROM phrases WHERE sentence LIKE '%{key}%';")
         return cursor.fetchall()

@@ -1,5 +1,5 @@
 import cv2
-from SerialCommunication.SerialCom import *
+from APIs.SerialCommunication.SerialCom import *
 
 
 class FaceRecognition():

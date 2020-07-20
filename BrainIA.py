@@ -2,12 +2,15 @@ from database import *
 import spacy
 
 
-class MainBrain(object):
-    def __init__(self) -> None:
-        super().__init__()
+class MainBrain(DataBase):
+
+
+    def __init__(self, banco = "Assistente.db"):
+        super().__init__(banco)
         self.nlp = spacy.load('pt_core_news_lg')
-        self.db = DataBase("Assistente.db")
+        self.db = DataBase(banco)
         self.train_mode = False
+
 
     def brain(self, command):
         command = self.format_command(command)
@@ -49,7 +52,23 @@ class MainBrain(object):
 
         return final
 
-    def search_response(self, context, command):
+    def search_dialog_context(self, context, command):
+        phrase_compleate = set(context.split())
+        response = ''
+        numJ = 0
+        id_con = 0
+        for key in context.split():
+            for line in self.db.search_by_response_in_contexts(key):
+                response_found = set(self.brain(line[1]).split())
+                indexFinal = self.index_jac_card(phrase_compleate, response_found) + self.index_jac_card(
+                    set(command.split()), set(line[1].split())) + self.similarity_index(command, line[1])
+                if indexFinal > numJ:
+                    numJ = indexFinal
+                    response = line[1]
+                    id_con = line[2]
+        return response, id_con, numJ
+
+    def search_action(self, context, command):
         command_compleate = set(context.split())
         response = ''
         numJ = 0
@@ -63,7 +82,6 @@ class MainBrain(object):
                     numJ = indexFinal
                     id_action = line[2]
                     response = line[1]
-        print(numJ)
         return response, id_action, numJ
 
     def similarity_index(self, p1, p2):
@@ -86,6 +104,9 @@ class MainBrain(object):
 
     def learn_new_call_command(self, command, id_action):
         self.db.insert_new_call_command(self.format_command(command), id_action)
+
+    def learn_new_dialog(self, command, id_con):
+        self.db.insert_new_phrase(self.format_command(command), id_con)
 
     def train_by_text(self):
         self.db.select('list_actions')

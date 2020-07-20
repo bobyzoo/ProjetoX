@@ -15,7 +15,8 @@ The purpose of this project is to create an artificial intelligence that most cl
 
 The communication system searches your database for the closest phrase to what you said. If she finds nothing and training mode is enabled, she will ask if she wants to add her phrase to the database and a possible answer.
 If training mode is disabled and the AI ​​confidence level is low, it will be ignored and say "I don't understand".
-
+## Informations about last version 1.0.0
+The last version was removed the feature of Face Recognition, but we will return with his. 
 ## Installation
 
 For project startup the repository must be cloned:
@@ -27,15 +28,12 @@ git clone https://github.com/bobyzoo/ProjetoX.git
 ## Basic Usage
 
 ```
-from classBot import *
+from Jarvis import *
 
-Bot = classBot('Assist.db', mode_train=False)
+jarvis = Jarvis()
 
 while True:
-    Quest = input('You: ')
-    answer = Bot.procuraResposta(Quest)
-    print(f'Bot: {answer}')
-
+    jarvis.listener(input('Talk with me: '))
 ```
 
 
